@@ -3,15 +3,15 @@ document.addEventListener('DOMContentLoaded', startGame)
 // Define your `board` object here!
 var board = {
   cells: [
+    {row:0, col:0, isMine: true, isMarked: false, hidden: true,}, 
+    {row:0, col:1, isMine: false, isMarked: false, hidden: true},
+    {row:0, col:2, isMine: false, isMarked: false, hidden: true},
+    {row:1, col:0, isMine: false, isMarked: false, hidden: true}, 
     {row:1, col:1, isMine: true, isMarked: false, hidden: true}, 
-    {row:1, col:2, isMine: false, isMarked: false, hidden: true, surroundingMines: 3},
-    {row:1, col:3, isMine: false, isMarked: false, hidden: true},
+    {row:1, col:2, isMine: true, isMarked: false, hidden: true},
+    {row:2, col:0, isMine: true, isMarked: false, hidden: true}, 
     {row:2, col:1, isMine: false, isMarked: false, hidden: true}, 
-    {row:2, col:2, isMine: true, isMarked: false, hidden: true}, 
-    {row:2, col:3, isMine: true, isMarked: false, hidden: true},
-    {row:3, col:1, isMine: true, isMarked: false, hidden: true}, 
-    {row:3, col:2, isMine: false, isMarked: false, hidden: true}, 
-    {row:3, col:3, isMine: false, isMarked: false, hidden: true}
+    {row:2, col:2, isMine: false, isMarked: false, hidden: true}
   ]
 
 }
@@ -40,6 +40,7 @@ function checkForWin () {
     }
   }
   lib.displayMessage('You win!')
+  alert("You Win!")
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
   //   lib.displayMessage('You win!')
@@ -57,7 +58,7 @@ function countSurroundingMines (cell) {
   var count = 0
   var surrounding = lib.getSurroundingCells(cell.row, cell.col)
   for( i=0; i<surrounding.length; i++){
-    if(surrounding[i].isMine == true){
+    if(surrounding[i].isMine){
       count += 1
     }
   }
