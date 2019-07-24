@@ -36,6 +36,7 @@ function createBoard(size){
 }
 
 function startGame () {
+  var boardSize = parseInt(prompt("How many cells per side?", "Max 6"), 10)
   createBoard(boardSize)
   for( var i=0; i<board.cells.length; i++){
     board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
